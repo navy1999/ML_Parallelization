@@ -32,6 +32,7 @@ def parallel_random_forest(X_train, y_train, n_estimators, num_threads):
     
     # Combine sub-forests
     combined_forest = RandomForestClassifier(n_estimators=n_estimators)
+    combined_forest.fit(X_train, y_train)
     combined_forest.estimators_ = [tree for forest in sub_forests for tree in forest.estimators_]
     return combined_forest
 
