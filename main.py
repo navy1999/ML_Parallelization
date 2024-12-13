@@ -1,5 +1,22 @@
 import numpy as np
 import matplotlib.pyplot as plt
+import argparse
+
+
+def parse_args():
+    parser = argparse.ArgumentParser(description="ML Parallelization Benchmark")
+    parser.add_argument("--algorithms", nargs="+", default=["pca", "rf", "nn", "knn"],
+                      choices=["pca", "rf", "nn", "knn"],
+                      help="Algorithms to benchmark (pca, rf, nn, knn)")
+    parser.add_argument("--dataset_configs", nargs="+", 
+                      type=lambda x: tuple(map(int, x.split('x'))),
+                      default=[(1000, 10), (1000, 100), (10000, 10), (10000, 100)],
+                      help="Dataset configurations in format 'samples x features' (e.g., 1000x10)")
+    parser.add_argument("--thread_counts", nargs="+", type=int, 
+                      default=[1, 2, 4, 8, 16],
+                      help="Thread counts to benchmark")
+    return parser.parse_args()
+
 
 def calculate_metrics(thread_execution_times):
     single_thread_time = thread_execution_times[0][1]
