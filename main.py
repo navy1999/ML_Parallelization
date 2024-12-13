@@ -43,7 +43,7 @@ def run_benchmark(benchmark_function, dataset_configs, thread_counts):
     results = {}
     for n_samples, n_features in dataset_configs:
         print(f"Processing dataset with {n_samples} samples and {n_features} features...")
-        thread_execution_times = benchmark_function(n_samples, n_features, thread_counts)
+        thread_execution_times = benchmark_function(dataset_configs, thread_counts)
         results[(n_samples, n_features)] = calculate_metrics(thread_execution_times)
     return results
 
