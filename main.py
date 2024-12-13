@@ -49,8 +49,7 @@ def plot_results(results, title):
     plt.savefig(f"{title.lower().replace(' ', '_')}_metrics.png")
     plt.close()
 
-# Modify the main function to use the new plotting function
-if _name_ == "_main_":
+if __name__ == "__main__":
     args = parse_args()
 
     for algo in args.algorithms:
