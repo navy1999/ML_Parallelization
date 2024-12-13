@@ -71,16 +71,16 @@ if __name__ == "__main__":
 
     for algo in args.algorithms:
         if algo == "pca":
-            results = run_benchmark(run_pca_benchmark, args.dataset_configs, args.thread_counts)
+            results = run_benchmark(pca_benchmark, args.dataset_configs, args.thread_counts)
             plot_results(results, "PCA")
         elif algo == "rf":
-            results = run_benchmark(run_random_forest_benchmark, args.dataset_configs, args.thread_counts)
+            results = run_benchmark(random_forest_benchmark, args.dataset_configs, args.thread_counts)
             plot_results(results, "Random Forest")
         elif algo == "nn":
-            results = run_benchmark(run_neural_network_benchmark, args.dataset_configs, args.thread_counts)
+            results = run_benchmark(neural_network_benchmark, args.dataset_configs, args.thread_counts)
             plot_results(results, "Neural Network")
         elif algo == "knn":
-            results = run_benchmark(run_knn_benchmark, args.dataset_configs, args.thread_counts)
+            results = run_benchmark(knn_benchmark, args.dataset_configs, args.thread_counts)
             plot_results(results, "K-Nearest Neighbors")
 
     print("Benchmarking complete. Results saved as PNG files.")
